@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import cl.individual.certificacionm7.R
 import cl.individual.certificacionm7.data.Repository
 import cl.individual.certificacionm7.data.local.SuperheroDatabase
 import cl.individual.certificacionm7.data.local.SuperheroDetailsEntity
@@ -36,17 +37,15 @@ class SuperheroViewModel(app: Application) : AndroidViewModel(app) {
     fun superheroesDetailsLiveData(id: Int): LiveData<SuperheroDetailsEntity> =
         repo.getSuperheroDetailsFromLocal(id)
 
-    fun sendEmail(context: Context, nombre: String, selectedHeroId: Int) {
+    fun sendEmail(context: Context, nombre: String) {
 
         val sendEmailIntent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
-            putExtra(Intent.EXTRA_EMAIL, arrayOf("comicconchile@hotmail.com"))
-            putExtra(Intent.EXTRA_SUBJECT, "Votación $nombre")
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(context.getString(R.string.send_email_to)))
+            putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.email_subject, nombre))
             putExtra(
                 Intent.EXTRA_TEXT,
-                "Hola \n Quiero que el siguiente super héroe $nombre aparezca en la " +
-                        "nueva edición de biografías animadas. \n Número de contacto: _____ \n " +
-                        "Gracias."
+                context.getString(R.string.email_text, nombre)
             )
         }
         if (sendEmailIntent.resolveActivity(context.packageManager) != null) {

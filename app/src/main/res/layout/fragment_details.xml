@@ -26,8 +26,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsFragmentToolbar">
+        app:layout_constraintTop_toBottomOf="@+id/detailsFragmentToolbar"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -59,21 +61,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="385dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideMiddleVert"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
+                app:layout_constraintGuide_begin="500dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideBottomDt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="484dp" />
+                app:layout_constraintGuide_begin="590dp" />
 
             <TextView
                 android:id="@+id/txtHeroNameDt"
@@ -90,8 +85,12 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardHeroImgDt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideMiddleDt"
                 app:layout_constraintEnd_toStartOf="@+id/guideRightDt"
@@ -127,8 +126,7 @@
                 android:text="@string/date_holder"
                 app:layout_constraintBottom_toTopOf="@+id/guideBottomDt"
                 app:layout_constraintEnd_toStartOf="@+id/guideRightDt"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guideMiddleVert"
+                app:layout_constraintStart_toStartOf="@+id/guideLeftDt"
                 app:layout_constraintTop_toBottomOf="@id/guideMiddleDt"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -139,9 +137,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="@string/color_holder"
-                app:layout_constraintEnd_toStartOf="@+id/guideRightDt"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guideMiddleVert"
+                app:layout_constraintEnd_toEndOf="@+id/txtFecha"
+                app:layout_constraintStart_toStartOf="@+id/txtFecha"
                 app:layout_constraintTop_toBottomOf="@+id/txtFecha" />
 
             <TextView
@@ -152,17 +149,18 @@
                 android:layout_marginTop="5dp"
                 android:text="@string/translation_holder"
                 app:layout_constraintBottom_toTopOf="@+id/guideBottomDt"
-                app:layout_constraintEnd_toStartOf="@+id/guideRightDt"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guideMiddleVert"
+                app:layout_constraintEnd_toEndOf="@+id/txtColor"
+                app:layout_constraintStart_toStartOf="@+id/txtColor"
                 app:layout_constraintTop_toBottomOf="@+id/txtColor"
                 app:layout_constraintVertical_bias="0.0" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardDescription"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
                 app:cardBackgroundColor="@color/light_primary_color"
                 app:cardCornerRadius="8dp"
@@ -179,11 +177,11 @@
                     <TextView
                         android:id="@+id/txtDescriptionDt"
                         style="@style/gral_text_style"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="16dp"
                         android:layout_marginBottom="8dp"
                         android:text="@string/details_holder"
                         app:layout_constraintBottom_toBottomOf="parent"

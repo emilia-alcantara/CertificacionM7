@@ -14,8 +14,8 @@ import coil.load
 private const val ARG_PARAM1 = "id"
 
 class DetailsFragment : Fragment() {
-    private lateinit var binding:FragmentDetailsBinding
-    private val heroViewModel : SuperheroViewModel by activityViewModels()
+    private lateinit var binding: FragmentDetailsBinding
+    private val heroViewModel: SuperheroViewModel by activityViewModels()
     private var selectedHeroId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,19 +40,22 @@ class DetailsFragment : Fragment() {
 
 
     private fun initDetailsView() {
+
         heroViewModel.superheroesDetailsLiveData(selectedHeroId).observe(viewLifecycleOwner) {
             if (it != null) {
                 binding.txtHeroNameDt.text = it.nombre
-                binding.txtFecha.text = it.fechaCreacion.toString()
-                binding.txtColor.text = it.color
-                binding.txtDescriptionDt.text = getString(R.string.description_title, it.origen, it.poder)
+                binding.txtFecha.text = getString(R.string.creation_date_dt, it.fechaCreacion)
+                binding.txtColor.text = getString(R.string.color_dt, it.color)
+                binding.txtDescriptionDt.text =
+                    getString(R.string.description_title, it.origen, it.poder)
                 binding.imgHeroDt.load(it.imagenLink)
 
-                val translationValue:String = if(it.traduccion == getString(R.string.translation_value)) {
-                    getString(R.string.translation_true)
-                } else {
-                    getString(R.string.translation_false)
-                }
+                val translationValue: String =
+                    if (it.traduccion == getString(R.string.translation_value)) {
+                        getString(R.string.translation_true)
+                    } else {
+                        getString(R.string.translation_false)
+                    }
 
                 binding.txtTraduccion.text = translationValue
             }
@@ -60,9 +63,9 @@ class DetailsFragment : Fragment() {
     }
 
     private fun initSendEmailButton() {
-        binding.fabSendEmail.setOnClickListener{
+        binding.fabSendEmail.setOnClickListener {
             heroViewModel.superheroesDetailsLiveData(selectedHeroId).observe(viewLifecycleOwner) {
-                heroViewModel.sendEmail(requireContext(), it.nombre, selectedHeroId)
+                heroViewModel.sendEmail(requireContext(), it.nombre)
             }
         }
     }
