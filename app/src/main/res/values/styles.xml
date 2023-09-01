@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="my_toolbar_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/primary_color</item>
+        <item name="android:elevation">15dp</item>
+    </style>
+
+    <style name="toolbar_text_style">
+        <item name="android:fontFamily">@font/farro_bold</item>
+        <item name="android:textColor">@color/text_and_icons</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="bold_text_style">
+        <item name="android:fontFamily">@font/farro_bold</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:text">@string/text_holder</item>
+    </style>
+
+    <style name="medium_text_style">
+        <item name="android:fontFamily">@font/farro_medium</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:text">@string/text_holder</item>
+    </style>
+
+    <style name="gral_text_style">
+        <item name="android:fontFamily">@font/farro</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:text">@string/text_holder</item>
+    </style>
+
+
+</resources>
