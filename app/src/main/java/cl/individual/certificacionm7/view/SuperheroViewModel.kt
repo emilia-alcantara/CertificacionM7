@@ -1,6 +1,8 @@
 package cl.individual.certificacionm7.view
 
 import android.app.Application
+import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -33,6 +35,25 @@ class SuperheroViewModel(app: Application) : AndroidViewModel(app) {
 
     fun superheroesDetailsLiveData(id: Int): LiveData<SuperheroDetailsEntity> =
         repo.getSuperheroDetailsFromLocal(id)
+
+    fun sendEmail(context: Context, nombre: String, selectedHeroId: Int) {
+
+        val sendEmailIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("comicconchile@hotmail.com"))
+            putExtra(Intent.EXTRA_SUBJECT, "Votación $nombre")
+            putExtra(
+                Intent.EXTRA_TEXT,
+                "Hola \n Quiero que el siguiente super héroe $nombre aparezca en la " +
+                        "nueva edición de biografías animadas. \n Número de contacto: _____ \n " +
+                        "Gracias."
+            )
+        }
+        if (sendEmailIntent.resolveActivity(context.packageManager) != null) {
+            context.startActivity(sendEmailIntent)
+        }
+
+    }
 
 
 }

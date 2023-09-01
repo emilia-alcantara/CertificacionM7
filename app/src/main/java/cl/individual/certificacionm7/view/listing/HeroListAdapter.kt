@@ -3,18 +3,20 @@ package cl.individual.certificacionm7.view.listing
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import cl.individual.certificacionm7.R
 import cl.individual.certificacionm7.data.local.SuperheroEntity
 import cl.individual.certificacionm7.databinding.ItemLayoutBinding
 import coil.load
 
-class HeroListAdapter : RecyclerView.Adapter<HeroListAdapter.HeroViewHolder> (){
+class HeroListAdapter : RecyclerView.Adapter<HeroListAdapter.HeroViewHolder>() {
     private lateinit var binding: ItemLayoutBinding
     private val heroesList = mutableListOf<SuperheroEntity>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroViewHolder {
         binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-    return HeroViewHolder(binding)
+        return HeroViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: HeroViewHolder, position: Int) {
@@ -30,17 +32,20 @@ class HeroListAdapter : RecyclerView.Adapter<HeroListAdapter.HeroViewHolder> (){
         notifyDataSetChanged()
     }
 
-    class HeroViewHolder(val binding:ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+    class HeroViewHolder(val binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(hero: SuperheroEntity) {
             binding.imgHero.load(hero.imagenLink)
             binding.txtHeroName.text = hero.nombre
             binding.txtCreationDate.text = hero.fechaCreacion.toString()
 
-            binding.cardHeroItem.setOnClickListener{
-                val selectedHeroId= Bundle()
+            binding.cardHeroItem.setOnClickListener {
+                val selectedHeroId = Bundle()
                 selectedHeroId.putInt("id", hero.id)
-                // pendiente navegar a otro fragment
+                findNavController(binding.root).navigate(
+                    R.id.action_listFragment_to_detailsFragment,
+                    selectedHeroId
+                )
             }
         }
 

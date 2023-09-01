@@ -6,4 +6,14 @@
     <string name="home">Home</string>
     <string name="hero_name">Name</string>
     <string name="creation_date">Creation date</string>
+    <string name="title_details_frag">Detalles</string>
+    <string name="date_holder">Fecha de creación</string>
+    <string name="color_holder">Color</string>
+    <string name="translation_holder">Traducción</string>
+    <string name="details_holder">Más detalles ( origen y poderes)</string>
+    <string name="fab_description">Botón con un icono de un sobre.</string>
+    <string name="translation_true">Cuenta con traducción al español.</string>
+    <string name="translation_false">Sin traducción.</string>
+    <string name="description_title">Detalles: \n \n %1$s \n \n %2$s</string>
+    <string name="translation_value">true</string>
 </resources>
